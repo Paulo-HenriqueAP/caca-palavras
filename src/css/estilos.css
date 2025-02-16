@@ -1,0 +1,91 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0%;
+    padding: 0%;
+}
+
+.options {
+    width: max-content;
+    padding: 6px;
+}
+
+.options button {
+    font-family: monospace;
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.low {
+    text-transform: lowercase;
+}
+
+#main {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    width: min-content;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid green;
+    width: 71mm;
+    margin: 6px;
+}
+
+td {
+    border: 1px solid black;
+    height: 25px;
+    padding: 3px;
+}
+
+li {
+    list-style: none;
+    margin: 6px;
+    padding: 6px;
+    border: 1px solid;
+    border-radius: 3px;
+    height: min-content;
+}
+
+#wordsLI {
+
+    padding: 0%;
+    word-wrap: break-word;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media print {
+    #main {
+        left: 0%;
+        top: 20%;
+        display: flex;
+        flex-direction: row;
+        transform: rotate(90deg);
+    }
+
+    .options {
+        display: none
+    }
+
+}
+
+.invalido {
+    background-color: red;
+    color: white;
+}
+
+.valido {
+    background-color: green;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
