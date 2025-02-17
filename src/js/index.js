@@ -9,101 +9,106 @@ const alp = [
     //'û', 'ũ', 'ý', 'ỳ', 'ŷ', 'ỹ'
 ];
 
-const words = "src/words/br-utf8.txt";
-
-let findIt = [
-
-];
-
-let arrayTXT;
+let findIt = [];
+let arrayTXT = [];
 let word = alp[Math.floor(Math.random() * alp.length)];
 let validWords = 0;
-let listOfWords;
 
-createTR()
+document.addEventListener("DOMContentLoaded", txtToArray("src/words/br.txt"));
 
-function createTR() {
-    let Hsize = 0;
+function txtToArray(txtSrc) {
+    validWords = 0;
+    findIt = [];
+    document.getElementById("bodyTable").remove();
 
-    while (Hsize < 10) {
-        const tr = document.createElement("tr");
-        tr.id = "tr" + Hsize;
-        Hsize++;
-        document.getElementById("bodyTable").appendChild(tr);
+    let table = document.createElement("table");
+    table.id = "bodyTable";
+    document.getElementById("main").appendChild(table)
 
-        if (Math.floor(Math.random() * 999) % 2 === 0) {
-            randomTD(tr.id)
-        } else if (validWords < 5) {
-            createValidWord(tr.id)
-            validWords++
-        } else {
-            randomTD(tr.id)
-        }
-    };
-    transformL("MAIUSCULA");
-
-    setTimeout(function () {
-        console.log(findIt)
-        findIt.sort()
-        randomLi();
-        document.getElementById("main").classList.remove("hidden")
-    }, 100)
-};
-
-function createValidWord(idName) {
-    fetch(words)
+    fetch(txtSrc)
         .then((res) => res.text())
         .then((data) => {
             (arrayTXT = data.split(/\r?\n/));
 
-            text = arrayTXT[Math.floor(Math.random() * arrayTXT.length)];
+            let Hsize = 0;
 
-            word = text;
+            while (Hsize < 10) {
+                const tr = document.createElement("tr");
+                tr.id = "tr" + Hsize;
+                Hsize++;
+                table.appendChild(tr);
 
-            findIt.push(word)
+                if (Math.floor(Math.random() * 999) % 2 === 0) {
+                    randomTD(tr.id)
+                } else if (validWords < 5) {
+                    createValidWord(tr.id)
+                    validWords++
+                } else {
+                    randomTD(tr.id)
+                }
+            };
+        })
 
-            if (Math.floor(Math.random() * 999) % 2 === 0) {
-                //console.log(word + " | antes")
-                word = word.split("").reverse().join("")
-                //console.log(word + " | depois")
-            }
+        .then(function () {
+            document.getElementById("wordsLi").remove();
 
-            startPoint = Math.floor(Math.random() * word.length)
+            let ul = document.createElement("ul");
+            ul.id = "wordsLi";
+            document.getElementById("main").appendChild(ul);
 
-            let beforeWord = "";
+            findIt.sort();
 
-            for (i = 0; i < startPoint; i++) {
-                beforeWord += alp[Math.floor(Math.random() * alp.length)];
-            }
+            findIt.forEach((function (name) {
+                li = document.createElement("li");
+                li.textContent = name;
+                ul.appendChild(li)
+            }))
 
-            beforeWord += word;
-            word = beforeWord
+            document.getElementById("main").classList.remove("hidden")
+            transformL("MAIUSCULA");
+        })
 
-            if (word.length < 23) {
-                for (i = word.length; i < 23; i++) {
-                    word += alp[Math.floor(Math.random() * alp.length)];
-                };
-            }
+}
 
-            Array.from(word).forEach(singleLetter => {
-                const td = document.createElement("td");
-                td.textContent = singleLetter
-                document.getElementById(idName).appendChild(td);
-                //td.classList.add("valido")
-            });
-        });
+function createValidWord(idName) {
+    text = arrayTXT[Math.floor(Math.random() * arrayTXT.length)];
+    console.log(text)
+    word = text;
+
+    findIt.push(word)
+
+    if (Math.floor(Math.random() * 999) % 2 === 0) {
+        //console.log(word + " | antes")
+        word = word.split("").reverse().join("")
+        //console.log(word + " | depois")
+    }
+
+    startPoint = Math.floor(Math.random() * word.length)
+
+    let beforeWord = "";
+
+    for (i = 0; i < startPoint; i++) {
+        beforeWord += alp[Math.floor(Math.random() * alp.length)];
+    }
+
+    beforeWord += word;
+    word = beforeWord
+
+    if (word.length < 23) {
+        for (i = word.length; i < 23; i++) {
+            word += alp[Math.floor(Math.random() * alp.length)];
+        };
+    }
+
+    Array.from(word).forEach(singleLetter => {
+        const td = document.createElement("td");
+        td.textContent = singleLetter
+        document.getElementById(idName).appendChild(td);
+        //td.classList.add("valido")
+    });
 
 };
 
-function randomLi() {
-    console.log(findIt)
-
-    findIt.forEach((function (name) {
-        li = document.createElement("li");
-        li.textContent = name;
-        document.getElementById("wordsLI").appendChild(li)
-    }))
-}
 
 function randomTD(idName) {
     for (let i = 0; i < 23; i++) {

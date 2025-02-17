@@ -23,17 +23,16 @@
 
 #main {
     position: absolute;
+    text-align: center;
+    width: min-content;
     transform: translate(-50%, -50%);
     left: 50%;
     top: 50%;
-    text-align: center;
-    width: min-content;
 }
 
 table {
     border-collapse: collapse;
-    border: 2px solid green;
-    width: 71mm;
+    border: 3px solid green;
     margin: 6px;
 }
 
@@ -52,8 +51,7 @@ li {
     height: min-content;
 }
 
-#wordsLI {
-
+#wordsLi {
     padding: 0%;
     word-wrap: break-word;
     display: flex;
@@ -63,11 +61,12 @@ li {
 
 @media print {
     #main {
-        left: 0%;
-        top: 20%;
+        top: 30%;
+        left: -47%;
+        transform: rotate(-90deg);
         display: flex;
         flex-direction: row;
-        transform: rotate(90deg);
+        max-height: 71mm;
     }
 
     .options {
