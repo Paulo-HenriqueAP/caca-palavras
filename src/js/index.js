@@ -1,20 +1,21 @@
 const alp = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i",
     "j", "k", "l", "m", "n", "o", "p", "q", "r",
-    "s", "t", "u", "v", "w", "x", "y", "z", "ç",
-    'á', 'à', 'â', 'ã', 'é', 'ê', 'í', 'ó', 'ô',
-    'õ', 'ú'
-    //'á', 'à', 'â', 'ã', 'é', 'è', 'ê', 'ẽ', 'í',
-    //'ì', 'î', 'ĩ', 'ó', 'ò', 'ô', 'õ', 'ú', 'ù',
-    //'û', 'ũ', 'ý', 'ỳ', 'ŷ', 'ỹ'
+    "s", "t", "u", "v", "w", "x", "y", "z",
+
+    //outros
+    "ç", 'á', 'à', 'â', 'ã', 'é', 'ê', 'í', 'ó', 'ô',
+    'õ', 'ú', 'ì'
 ];
 
 let findIt = [];
 let arrayTXT = [];
 let word = alp[Math.floor(Math.random() * alp.length)];
 let validWords = 0;
+const mainBody = document.getElementById("main");
 
 document.addEventListener("DOMContentLoaded", txtToArray("src/words/br.txt"));
+
 
 function txtToArray(txtSrc) {
     validWords = 0;
@@ -23,7 +24,7 @@ function txtToArray(txtSrc) {
 
     let table = document.createElement("table");
     table.id = "bodyTable";
-    document.getElementById("main").appendChild(table)
+    mainBody.appendChild(table)
 
     fetch(txtSrc)
         .then((res) => res.text())
@@ -32,7 +33,7 @@ function txtToArray(txtSrc) {
 
             let Hsize = 0;
 
-            while (Hsize < 10) {
+            while (Hsize < 30) {
                 const tr = document.createElement("tr");
                 tr.id = "tr" + Hsize;
                 Hsize++;
@@ -40,7 +41,7 @@ function txtToArray(txtSrc) {
 
                 if (Math.floor(Math.random() * 999) % 2 === 0) {
                     randomTD(tr.id)
-                } else if (validWords < 5) {
+                } else if (validWords < 20) {
                     createValidWord(tr.id)
                     validWords++
                 } else {
@@ -52,9 +53,10 @@ function txtToArray(txtSrc) {
         .then(function () {
             document.getElementById("wordsLi").remove();
 
-            let ul = document.createElement("ul");
+            const ul = document.createElement("ul");
             ul.id = "wordsLi";
-            document.getElementById("main").appendChild(ul);
+
+            mainBody.append(ul)
 
             findIt.sort();
 
@@ -64,7 +66,7 @@ function txtToArray(txtSrc) {
                 ul.appendChild(li)
             }))
 
-            document.getElementById("main").classList.remove("hidden")
+           mainBody.classList.remove("hidden")
             transformL("MAIUSCULA");
         })
 
@@ -131,5 +133,6 @@ function transformL(makeIt) {
 };
 
 document.addEventListener("keydown", function (event) {
-    event.key == "F4" ? window.print() : null;
+    document.title = "Caça palavras " + arrayTXT[Math.floor(Math.random() * arrayTXT.length)];
+    event.key == "p" ? window.print() : null;
 })

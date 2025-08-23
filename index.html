@@ -13,12 +13,16 @@
         <button onclick="txtToArray('src/words/es.txt')">Espanhol ↺</button>
         <button onclick="txtToArray('src/words/en.txt')">Inglês ↺</button>
         <button onclick="txtToArray('src/words/br.txt')">Português ↺</button>
-        <br><br>
+        <br>
+        <br>
         <button onclick="transformL('MAIUSCULA')">MAIÚSCULAS</button>
         <button onclick="transformL('minuscula')">minusculas</button>
+
+        <button onclick="window.print()">IMPRIMIR (P)</button>
     </div>
 
     <div id="main" class="hidden">
+        <h3>Caça palavras</h3>
         <table id="bodyTable"></table>
         <ul id="wordsLi"></ul>
     </div>
