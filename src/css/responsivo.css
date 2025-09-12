@@ -1,0 +1,37 @@
+@media only screen and (max-width: 768px) {
+    #bodyTable {
+        width: 95vw;
+        max-width: none;
+        height: 50vh;
+    }
+
+    #languageDiv button {
+        display: block;
+    }
+
+}
+
+
+/* Horizontal (Landscape) */
+
+@media only screen and (max-height:420px) {
+    #bodyTable {
+        width: 100vw;
+        max-width: 50vw;
+        height: 50vh;
+    }
+
+    #main {
+        position: relative;
+        display: flex;
+        width: 99%;
+    }
+
+    #wordsLi {
+        width: 100%;
+    }
+
+    #bodyTable td {
+        border-radius: 3px;
+    }
+}

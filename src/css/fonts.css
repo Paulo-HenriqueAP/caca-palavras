@@ -1,0 +1,68 @@
+@font-face {
+    font-family: 'BebasNeue';
+    src: url("fonts/Bebas_Neue/BebasNeue-Regular.ttf") format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ComicNeue';
+    src: url("fonts/Comic_Neue/ComicNeue-Regular.ttf") format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: url("fonts/Dancing_Script/DancingScript-Regular.ttf") format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Orbitron';
+    src: url("fonts/Orbitron/Orbitron-Regular.ttf") format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Playfair';
+    src: url("fonts/Playfair/Playfair_144pt-Regular.ttf") format('truetype');
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url("fonts/Poppins/Poppins-Regular.ttf") format('truetype');
+    font-display: swap;
+}
+
+
+#ft0 {
+    font-family: arial;
+}
+
+#ft1 {
+    font-family: BebasNeue;
+}
+
+#ft2 {
+    font-family: ComicNeue;
+}
+
+#ft3 {
+    font-family: Dancing Script;
+}
+
+#ft4 {
+    font-family: Monospace;
+}
+
+#ft5 {
+    font-family: Orbitron;
+}
+
+#ft6 {
+    font-family: Playfair;
+}
+
+#ft7 {
+    font-family: Poppins;
+}

@@ -1,34 +1,103 @@
-# Caça-Palavras
+<div align="center">
 
-Um jogo de caça-palavras interativo com dicionários extensos e personalização de grid para jogar ou imprimir!.
+# Caça-Palavras  
+
+Um jogo de caça-palavras interativo com milhares de palavras e personalização para jogar ou imprimir!  
+
+<p>
+<b>README:</b>
+<b>Português</b> |
+<a href="README.en.md">English</a> |
+<a href="README.es.md">Español</a> |
+<a href="README.fr.md">Français</a> |
+<a href="README.it.md">Italiano</a>
+</p>
+
+</div>
+
+---
 
 ## Funcionalidades
 
-- **3 dicionários Extensos**: Um milhão, trezentas e setenta e quatro mil, novecentas e sessenta e três palavras no total:
+- **5 Dicionários Extensos**: 
+  `2.098.638` (dois milhões, noventa e oito mil, seiscentas e trinta e oito) palavras no total:
+  - `261.798` em **Português**
+  - `466.550` em **Inglês**
+  - `646.615` em **Espanhol**
+  - `62.112` em **Francês**
+  - `661.563` em **Italiano**
 
-  - 261.798 > Português
-  - 466.550 > Inglês
-  - 646.615 > Espanhol
-- **Direções Variadas**: Palavras podem ser posicionada na: horizontal , vertical, diagonal com possibilidade de palavra invertida!
-- **Compartilhe seu progresso com uma screenshot.** `html2canvas`
-- **Cada jogo é único com palavras variadas.**
-- **Feedback Interativo**: Sons e cores para seleções, validações, erros e vitórias.
-- **Salvamento Automático**: Progresso salvo após cada palavra encontrada. O cronômetro é salvo a cada 30 segundos ou `beforeunload`. É utilizado `localStorage`.
-- **Personalização**: Ajuste o tipo/ tamanho de fonte, número máximo de palavras .. etc
-- **Aprenda jogando**: toque na palavra para entender seu significado `Wikipedia REST API` | **Fallback de Busca**: [DuckDuckGo](https://duckduckgo.com/).
+- **Direções Variadas**:  
+  Palavras posicionadas em horizontal, vertical, diagonal ou diagonal inversa,  
+  com possibilidade de palavras invertidas.
+
+- **Personalização de Grid**:  
+  Ajuste o tamanho do grid (ex.: `5x5 | 10x10 | máx 100x100`),  
+  com configurações e fontes variadas.
+
+- **Compartilhe seu Progresso**:  
+  Capture screenshots com `html2canvas`.
+
+- **Jogo Único**:  
+  Cada partida é única e exclusiva. Ajuste a quantidade de palavras nas configurações:  
+  - `poucas`  
+  - `normal`  
+  - `muitas`
+
+- **Feedback Interativo**:  
+  Cores aleatórias, sons de interação, validação, erros e vitórias.
+
+- **Salvamento Automático**:  
+  Progresso salvo via `localStorage` após encontrar a primeira palavra.  
+  O cronômetro é salvo a cada `30 segundos` ou em `beforeunload`.
+
+- **Aprenda Jogando**:  
+  Toque na palavra para ver seu significado via `Wikipedia REST API`.  
+  Fallback: [DuckDuckGo](https://duckduckgo.com/).
+
+---
 
 ## Como Jogar
 
-Arraste ou clique nas letras no grid para selecionar palavras listadas. As palavras válidas são marcadas com feedback visual e sonoro. Toque no idioma para um novo jogo.
+Arraste ou clique nas letras do grid.  
+Palavras válidas ganham feedback **visual** e **sonoro**.
+
+Escolha seu idioma para iniciar um novo jogo.  
+Ajuste o tamanho do grid e a fonte para personalizar a experiência.
+
+---
 
 ## Tecnologias
 
-- Trindade Web
-- Wikipedia REST API
-- html2canvas
+- `Fontes locais`
+- `html2canvas`
+- `Trindade Web`
+- `Wikipedia REST API`
+
+---
 
 ## Créditos
 
-- **Dev > Paulo Henrique AP** [Github](https://github.com/Paulo-HenriqueAP)
-- **Sons**:[OpenGameArt](https://opengameart.org/) && [Pixabay](https://pixabay.com/users/floraphonic-38928062/).
-- **Icones** [Google icons](https://fonts.google.com/icons)
+### DEV
+- [Paulo Henrique AP](https://github.com/Paulo-HenriqueAP)
+
+### Dicionários
+- **Português (br.txt)**: [USP](https://www.ime.usp.br/~pf/dicios/)  
+- **Inglês (en.txt)**: [dwyl](https://github.com/dwyl/english-words)  
+- **Espanhol (es.txt)**: [JorgeDuenasLerin](https://github.com/JorgeDuenasLerin/diccionario-espanol-txt/tree/master)  
+- **Francês (fr.txt)**: [nderousseaux](https://gist.github.com/nderousseaux/382c085f393ef88466e1cbcc98589687)  
+- **Italiano (it.txt)** [napolux](https://github.com/napolux)
+
+### Recursos visuais
+- **Bandeiras**:  
+  [Wikipedia / Iconarchive](https://www.iconarchive.com/show/flags-icons-by-wikipedia.html)  
+- **Cursores**:  
+  [Kenney](https://www.kenney.nl)  
+- **Ícones / Fontes**:  
+  [Google Icons](https://fonts.google.com/icons)  
+
+### Sons
+- [OpenGameArt](https://opengameart.org/)  
+- [Pixabay](https://pixabay.com/users/floraphonic-38928062/)  
+
+---

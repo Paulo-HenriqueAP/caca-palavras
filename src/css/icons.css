@@ -1,0 +1,108 @@
+#en::before {
+    content: url("icones/us.svg");
+    width: 30px;
+}
+
+#es::before {
+    content: url("icones/es.svg");
+    width: 30px;
+}
+
+#fr::before {
+    content: url("icones/fr.svg");
+    width: 30px;
+}
+
+#it::before {
+    content: url("icones/it.svg");
+    width: 30px;
+}
+
+#pt::before {
+    content: url("icones/br.svg");
+    width: 30px;
+}
+
+
+#en::after {
+    content: url("icones/refr.svg");
+    margin-left: 3px;
+}
+
+#es::after {
+    content: url("icones/refr.svg");
+    margin-left: 3px;
+}
+
+#fr::after {
+    content: url("icones/refr.svg");
+    margin-left: 3px;
+}
+
+#it::after {
+    content: url("icones/refr.svg");
+    margin-left: 3px;
+}
+
+#pt::after {
+    content: url("icones/refr.svg");
+    margin-left: 3px;
+}
+
+#muteButton::after {
+    content: url("icones/mute.svg");
+    margin-left: 3px;
+}
+
+#fullscreenButton::after {
+    content: url("icones/fullScreen.svg");
+}
+
+#fullscreenButton {
+    cursor: url("icones/cursorPointer.png"), auto;
+}
+
+#borderOn::after {
+    content: url("icones/border.svg");
+    margin-left: 3px;
+}
+
+#printButton::after {
+    content: url("icones/print.svg");
+    margin-left: 3px;
+}
+
+#lowerCase::after {
+    content: url("icones/lowerCase.svg");
+    margin-left: 3px;
+}
+
+#savePNG::after {
+    content: url("icones/share.svg");
+    margin-left: 3px;
+}
+
+#fontList summary::before {
+    content: url("icones/settings.svg");
+}
+
+#fontList[open] summary::before {
+    content: url("icones/close.svg");
+    right: 5%;
+    position: absolute;
+}
+
+#wordsLi summary::after {
+    content: url("icones/expand.svg");
+    display: inline-block;
+    opacity: 50%;
+}
+
+#wordsLi details[open] summary::after {
+    content: url("icones/close.svg");
+    opacity: 100%;
+}
+
+#closeRate::after {
+    content: url("icones/close.svg");
+}

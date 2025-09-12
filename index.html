@@ -1,33 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" onmouseleave="if (dragg == true){startLoadBar(); dragg = false}">
+<!--Sem isso o arrastar buga ao perder foco-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/css/estilos.css">
+    <link rel="stylesheet" href="src/css/icons.css">
+    <link rel="stylesheet" href="src/css/fonts.css">
+    <link rel="stylesheet" href="src/css/responsivo.css">
     <title>Caça Palavras</title>
+    <link rel="shortcut icon" href="src/css/icones/favicon.ico">
 </head>
 
 <body>
-    <div class="options">
-        <button onclick="txtToArray('src/words/es.txt')">Espanhol ↺</button>
-        <button onclick="txtToArray('src/words/en.txt')">Inglês ↺</button>
-        <button onclick="txtToArray('src/words/br.txt')">Português ↺</button>
+    <h1 id="closeRate" class="hidden"></h1>
+    <details id="fontList">
+        <summary>
+        </summary>
         <br>
-        <br>
-        <button onclick="transformL('MAIUSCULA')">MAIÚSCULAS</button>
-        <button onclick="transformL('minuscula')">minusculas</button>
+        <h3>
+            <div id="fsett">
+                <span id="fh3">fonte</span>
+                <span style="text-align: center;font-weight: bold;font-size: x-small;"><em id="fontPX"
+                        style="font-size: small;">24</em>px</span>
+                <button id="boldOn" onclick="turnBold(); this,classList.toggle('sel')"><img
+                        src="src/css/icones/boldON.svg"></button>
+            </div>
+            <input type="range" id="fontSize" min="5" max="100" oninput="fontSize(this.value)" value="24">
+            <span id="resetFontSize" onclick="fontSize('default')">⟲</span>
+        </h3>
+        <li onclick="changeFont(this)" id="ft0">Arial</li>
+        <li onclick="changeFont(this)" id="ft1" data-font="'BebasNeue', Arial">Bebas Neue</li>
+        <li onclick="changeFont(this)" id="ft2" data-font="'ComicNeue', Arial" class="sel">Comic Neue</li>
+        <li onclick="changeFont(this)" id="ft3" data-font="'Dancing Script', Arial">Dancing Script</li>
+        <li onclick="changeFont(this)" id="ft4">Monospace</li>
+        <li onclick="changeFont(this)" id="ft5" data-font="'Orbitron', Arial">Orbitron</li>
+        <li onclick="changeFont(this)" id="ft6" data-font="'Playfair', Arial">Playfair</li>
+        <li onclick="changeFont(this)" id="ft7" data-font="'Poppins', Arial">Poppins</li>
 
-        <button onclick="window.print()">IMPRIMIR (P)</button>
+        <div id="gridSize">
+            <span id="gridSizeSpan">geração de palavras</span>
+            <button onclick="changeMaxTry(32, 'c0')" id="c0">poucas</button>
+            <button onclick="changeMaxTry(128, 'c1')" id="c1" class="sel">normal</button>
+            <button onclick="changeMaxTry(1024, 'c2')" id="c2">muitas</button>
+
+            <div id="w_h">
+                <span style=" background-color: #2e2e2e; border-radius: 3px;">
+                    <em id="ww">largura</em>
+                    &gt; <input type="number" value="15" id="gridS" oninput="gridSize(this.value)"> &lt;
+                    <em id="hh">altura</em>
+                </span>
+
+                <span style="font-size: x-small; color: gray;">
+                    <em id="info_wh">* válido no próx.</em>
+                    <img src="src/css/icones/refr.svg">
+                </span>
+
+            </div>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+            <button onclick="soundOn = !soundOn; this.classList.toggle('sel')" id="muteButton"></button>
+            <button id="rate" onclick="rate()">⭐</button>
+            <button onclick="toggleFullscreen();" id="fullscreenButton"></button>
+        </div>
+
+    </details>
+    <div class="options hidden" id="opt">
+        <div id="languageDiv">
+            <button id="en" onclick="txtToArray(0)"></button>
+            <button id="es" onclick="txtToArray(1)"></button>
+            <button id="fr" onclick="txtToArray(2)"></button>
+            <button id="it" onclick="txtToArray(3)"></button>
+            <button id="pt" onclick="txtToArray(4)"></button>
+        </div>
+        <button onclick=" document.body.classList.toggle('borders'); this.classList.toggle('sel')" id="borderOn">
+            Bordas
+        </button>
+
+        <button onclick="document.body.classList.toggle('low'); this.classList.toggle('sel')" id="lowerCase">
+            minusculas
+        </button>
+
+        <button onclick=" window.print()" id="printButton">imprimir</button>
+
+        <button onclick="tempShare()" id="savePNG">PNG</button>
+    </div>
+    <span id="title"></span>
+
+    <div id="timerDiv">
+        <span id="timer">00 : 00</span>
     </div>
 
-    <div id="main" class="hidden">
-        <h3>Caça palavras</h3>
+    <div id="tempHub">
+        <span id="tempWord">&gt;</span>
+        <span id="loadBar"></span>
+    </div>
+
+    <div id="main" class="hidden" onmouseleave="if (dragg == true){startLoadBar(); dragg = false}">
+        <div id="tShare"></div>
         <table id="bodyTable"></table>
-        <ul id="wordsLi"></ul>
+        <div id="wordsLi"></div>
     </div>
+    <h3 style="color: white;" id="loading">carregando...</h3>
 
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="src/js/api.js"></script>
+<script src="src/js/save_load.js"></script>
+<script src="src/words/alp.js"></script>
+<script src="src/js/customization.js"></script>
+<script src="src/js/pop.js"></script>
+<script src="src/js/timer.js"></script>
 <script src="src/js/index.js"></script>
 
 </html>

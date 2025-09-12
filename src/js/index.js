@@ -1,138 +1,345 @@
-const alp = [
-    "a", "b", "c", "d", "e", "f", "g", "h", "i",
-    "j", "k", "l", "m", "n", "o", "p", "q", "r",
-    "s", "t", "u", "v", "w", "x", "y", "z",
+const wordsPack = [
+    { path: "src/words/en.txt", id: "en", index: 0 }, { path: "src/words/es.txt", id: "es", index: 1 },
 
-    //outros
-    "ç", 'á', 'à', 'â', 'ã', 'é', 'ê', 'í', 'ó', 'ô',
-    'õ', 'ú', 'ì'
+    { path: "src/words/fr.txt", id: "fr", index: 2 }, { path: "src/words/it.txt", id: "it", index: 3 },
+
+    { path: "src/words/br.txt", id: "pt", index: 4 },
+
 ];
 
-let findIt = [];
-let arrayTXT = [];
-let word = alp[Math.floor(Math.random() * alp.length)];
-let validWords = 0;
 const mainBody = document.getElementById("main");
+const loading = document.getElementById("loading");
 
-document.addEventListener("DOMContentLoaded", txtToArray("src/words/br.txt"));
+let languageSRC = [Math.floor(Math.random() * wordsPack.length)];
 
+let dragg = false;
 
-function txtToArray(txtSrc) {
-    validWords = 0;
-    findIt = [];
-    document.getElementById("bodyTable").remove();
+let arrayTXT = [];
+let findIt = [];
+let caixas = [];
+let valid = [];
+let valid_cList = [];
+let validWords = 0;
+let gridW = 15;
+let gridH = 15;
+let maxTry = 128;
 
-    let table = document.createElement("table");
-    table.id = "bodyTable";
-    mainBody.appendChild(table)
+let tipos = [
+    { "horizontal": 1 },
+    { "vertical": gridW },
+    { "cruzado": gridW + 1 },
+    { "cruzado2": gridW - 1 }
+];
 
-    fetch(txtSrc)
+document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("lastSaved")) {
+        lastSaved = localStorage.getItem("lastSaved");
+        const gridS = localStorage.getItem("gridSize");
+        gridSize(gridS);
+        document.getElementById("gridS").value = gridS;
+        languageSRC = wordsPack[localStorage.getItem("languageSRC")];
+        document.getElementById(languageSRC.id).classList.add("sel");
+
+        createTable();
+    } else {
+        txtToArray(languageSRC);
+    }
+})
+
+function txtToArray(index) {
+    title.textContent = "";
+    loading.textContent = UI_loading[index];
+    if (localStorage.getItem("lastSaved") && !window.confirm("Deletar o jogo salvo? " + lastSaved)) {
+        return
+    } else {
+        localStorage.clear();
+    }
+
+    languageSRC = wordsPack[index];
+
+    wordsPack.forEach(function (i) {
+        document.getElementById(i.id).classList.remove("sel");
+    })
+
+    document.getElementById(languageSRC.id).classList.add("sel");
+
+    mainBody.classList.add("hidden");
+    document.getElementById("opt").classList.add("hidden");
+
+    fetch(languageSRC.path)
         .then((res) => res.text())
         .then((data) => {
             (arrayTXT = data.split(/\r?\n/));
-
-            let Hsize = 0;
-
-            while (Hsize < 30) {
-                const tr = document.createElement("tr");
-                tr.id = "tr" + Hsize;
-                Hsize++;
-                table.appendChild(tr);
-
-                if (Math.floor(Math.random() * 999) % 2 === 0) {
-                    randomTD(tr.id)
-                } else if (validWords < 20) {
-                    createValidWord(tr.id)
-                    validWords++
-                } else {
-                    randomTD(tr.id)
-                }
-            };
         })
 
         .then(function () {
-            document.getElementById("wordsLi").remove();
+            createTable();
 
-            const ul = document.createElement("ul");
-            ul.id = "wordsLi";
-
-            mainBody.append(ul)
-
-            findIt.sort();
-
-            findIt.forEach((function (name) {
-                li = document.createElement("li");
-                li.textContent = name;
-                ul.appendChild(li)
-            }))
-
-           mainBody.classList.remove("hidden")
-            transformL("MAIUSCULA");
         })
-
 }
 
-function createValidWord(idName) {
-    text = arrayTXT[Math.floor(Math.random() * arrayTXT.length)];
-    console.log(text)
-    word = text;
+function createTable() {
+    caixas = [];
+    valid_cList = [];
+    dragg = false;
+    clearInterval(timer);
+    sec = 0;
+    min = 0;
+    hour = 0;
 
-    findIt.push(word)
-
-    if (Math.floor(Math.random() * 999) % 2 === 0) {
-        //console.log(word + " | antes")
-        word = word.split("").reverse().join("")
-        //console.log(word + " | depois")
+    let tempoSalvo = JSON.parse(localStorage.getItem("gameTime"));
+    if (tempoSalvo) {
+        sec = tempoSalvo.seconds;
+        min = tempoSalvo.minutes;
+        hour = tempoSalvo.hours;
     }
 
-    startPoint = Math.floor(Math.random() * word.length)
+    timerOn();
 
-    let beforeWord = "";
+    try {
+        document.getElementById("bodyTable").remove()
 
-    for (i = 0; i < startPoint; i++) {
-        beforeWord += alp[Math.floor(Math.random() * alp.length)];
+        const bodyTable = document.createElement("table");
+        bodyTable.id = "bodyTable";
+        mainBody.appendChild(bodyTable);
+        validWords = 0;
+        findIt = [];
+        let count = 0;
+
+        while (count < gridH) {
+            const tr = document.createElement("tr");
+            tr.id = "tr" + count;
+            bodyTable.appendChild(tr);
+
+            for (let i = 0; i < gridW; i++) {
+                const td = document.createElement("td");
+                td.id = `TD${count * gridW + i}`
+                td.textContent = alp[Math.floor(Math.random() * alp.length)];
+                document.getElementById(tr.id).appendChild(td);
+                caixas.push(td);
+            }
+            count++;
+        }
+
+        bodyTable.addEventListener("mousedown", (e) => {
+            if (e.target.tagName === "TD") {
+                e.preventDefault();
+                const td = e.target;
+                if (td.classList.contains("marcado") && !td.classList.contains("valido")) {
+                    td.classList.remove("marcado");
+                    td.style.backgroundColor = "";
+                    td.style.color = "";
+                    if (intervalId) clearInterval(intervalId);
+                    checkWord("remove", td);
+                } else {
+                    td.classList.add("marcado");
+                    td.style.backgroundColor = color;
+                    td.style.color = textColor;
+                    checkWord("add", td);
+                }
+                dragg = true;
+            }
+        });
+
+        bodyTable.addEventListener("contextmenu", (e) => {
+            if (e.target.tagName === "TD") {
+                e.preventDefault();
+            }
+        });
+
+        bodyTable.addEventListener("mouseup", (e) => {
+            if (e.target.tagName === "TD") {
+                playSound();
+            }
+
+            if (dragg) {
+                startLoadBar();
+                dragg = false;
+            }
+
+        });
+
+        bodyTable.addEventListener("mouseover", (e) => {
+            if (dragg && e.target.tagName === "TD") {
+                const td = e.target;
+                playSound();
+                if (td.classList.contains("marcado") && !td.classList.contains("valido")) {
+                    td.classList.remove("marcado");
+                    td.style.backgroundColor = "";
+                    td.style.color = "";
+                    checkWord("remove", td);
+                } else {
+                    td.classList.add("marcado");
+                    td.style.backgroundColor = color;
+                    td.style.color = textColor;
+                    checkWord("add", td);
+                }
+            }
+        });
+
+    } catch (err) {
+        alert("Ocorreu uma falha! Tente novamente. > " + err);
+        location.reload();
+    } finally {
+        if (localStorage.getItem("lastSaved")) {
+            loadGame();
+        } else {
+            for (let i = 0; i < maxTry; i++) {
+                validTD(tipos[Math.floor(Math.random() * tipos.length)]);
+            }
+        }
+
+        document.getElementById("wordsLi").remove();
+
+        const divLi = document.createElement("div");
+        divLi.id = "wordsLi";
+        mainBody.append(divLi);
+
+        findIt.sort((a, b) =>
+            a.localeCompare(b, undefined, { sensitivity: "base" })
+        );
+
+        findIt.forEach((name) => {
+            const el = document.createElement("div");
+            el.id = name;
+            el.classList = "wordList";
+
+            const details = document.createElement("details");
+
+            const summary = document.createElement("summary");
+            summary.textContent = name;
+
+            summary.addEventListener("click", () => {
+                summaryWord(summary.textContent);
+            });
+
+            const p = document.createElement("p");
+            p.id = "summ_" + name;
+            p.classList.add("hidden");
+
+            details.appendChild(summary);
+            details.appendChild(p);
+
+            el.append(details);
+
+            divLi.appendChild(el);
+            validWords++;
+        });
     }
 
-    beforeWord += word;
-    word = beforeWord
+    document.querySelectorAll("td").forEach(td => {
+        td.classList.remove("horizontal", "vertical", "cruzado", "cruzado2", "marcado");
+    })//debugar
 
-    if (word.length < 23) {
-        for (i = word.length; i < 23; i++) {
-            word += alp[Math.floor(Math.random() * alp.length)];
-        };
-    }
 
-    Array.from(word).forEach(singleLetter => {
-        const td = document.createElement("td");
-        td.textContent = singleLetter
-        document.getElementById(idName).appendChild(td);
-        //td.classList.add("valido")
+    let w = 0;
+    valid_cList.forEach(item => {
+        if (item.found) {
+            item.index.forEach(idx => {
+                const td = document.getElementById(`TD${idx}`);
+                if (td) {
+                    td.classList.add("valido");
+                    td.classList.remove("marcado");
+                }
+            });
+            document.getElementById(item.word).style.opacity = "20%";
+            document.getElementById(item.word).style.border = "1px solid green";
+            w++
+        }
     });
 
-};
+    if (w == valid_cList.length) {
+        clearInterval(saveGameTime);
+        vSoundPlay();
+    }
 
+    if (gridW >= 20) {
+        document.getElementById("fontSize").value = 16;
+    }
 
-function randomTD(idName) {
-    for (let i = 0; i < 23; i++) {
-        w = alp[Math.floor(Math.random() * alp.length)]
-        word += w;
+    fontSize(document.getElementById("fontSize").value);
+    uiLanguage(languageSRC.id);
+    loading.textContent = "";
+    mainBody.classList.remove("hidden");
+    document.getElementById("opt").classList.remove("hidden");
+}
 
-        const td = document.createElement("td");
+function validTD(tipo) {
+    const tipoName = Object.keys(tipo)[0];
+    const incremento = tipo[tipoName];
+    let startPoint = caixas[Math.floor(Math.random() * caixas.length)];
+    let text = arrayTXT[Math.floor(Math.random() * arrayTXT.length)];
+    let index = Number(startPoint.id.replace("TD", ""));
+    let valid = [];
+    let validIndex = [];
 
-        td.textContent = alp[Math.floor(Math.random() * alp.length)];
+    try {
+        let reverse = Math.floor(Math.random() * 999) % 2 === 0;
+        let displayText = text;
+        if (reverse) {
+            text = text.split("").reverse().join("");
+        }
 
-        document.getElementById(idName).appendChild(td);
-        //td.classList.add("invalido")
-    };
-    //console.log(word)
-};
+        if (tipoName === "horizontal" && Math.floor(index / gridW) !== Math.floor((index + text.length - 1) / gridW)) {
+            throw new Error("não cabe na linha");
+        }
+        if (tipoName === "vertical" && index + (text.length - 1) * gridW >= caixas.length) {
+            throw new Error("não cabe na coluna");
+        }
+        if (tipoName === "cruzado" && (Math.floor(index / gridW) + text.length - 1 >= gridH ||
+            index + (text.length - 1) * (gridW + 1) >= caixas.length ||
+            (index % gridW) + text.length - 1 >= gridW)) {
+            throw new Error("não cabe na diagonal");
+        }
+        if (tipoName === "cruzado2" && (Math.floor(index / gridW) + text.length - 1 >= gridH ||
+            index + (text.length - 1) * (gridW - 1) >= caixas.length ||
+            (index % gridW) - (text.length - 1) < 0)) {
+            throw new Error("não cabe na diagonal inversa");
+        }
 
-function transformL(makeIt) {
-    document.body.classList.remove("upper", "low")
-    makeIt == "MAIUSCULA" ? document.body.classList.add("upper") : document.body.classList.add("low");
-};
+        Array.from(text).forEach((letter, i) => {
+            let falseIndex = index + i * incremento;
+            let td = document.getElementById(`TD${falseIndex}`);
+            if (!td || (td.classList.length > 0 && td.textContent !== letter)) {
+                throw new Error("incompatível");
+            }
+            valid.push({ td, letter });
+            validIndex.push(falseIndex);
+            td.classList.remove("horizontal", "vertical", "cruzado", "cruzado2");
+            td.classList.add(tipoName);
+        });
 
-document.addEventListener("keydown", function (event) {
-    document.title = "Caça palavras " + arrayTXT[Math.floor(Math.random() * arrayTXT.length)];
-    event.key == "p" ? window.print() : null;
-})
+        valid.forEach(({ td, letter }) => {
+            td.textContent = letter;
+        });
+
+        findIt.push(displayText);
+        valid_cList.push({ word: displayText, found: false, index: reverse ? validIndex.reverse() : validIndex });
+    } catch (err) {
+        // console.log("Erro:", err.message);
+        return;
+    }
+}
+window.onbeforeprint = function () {
+    document.title = `${document.getElementById("title").textContent} - ${new Date().toLocaleString()}`
+}
+
+function rate() {
+    const closeRate = document.getElementById("closeRate");
+
+    closeRate.addEventListener("click", () => {
+        iframe.remove();
+        closeRate.classList.add("hidden");
+        document.getElementById("fontList").classList.remove("hidden");
+        document.getElementById("main").classList.remove("hidden")
+    })
+
+    const iframe = document.createElement("iframe");
+    iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSenlkFkxKr985QhJQJaoPRrnOSFCV4iMFvXuf6GxXeWDy00gw/viewform?embedded=true";
+    iframe.frameBorder = "0";
+    iframe.marginwidth = "0";
+    document.body.appendChild(iframe)
+    closeRate.classList.remove("hidden");
+    document.getElementById("fontList").classList.add("hidden");
+    document.getElementById("main").classList.add("hidden");
+}
