@@ -54,10 +54,6 @@
     margin-left: 3px;
 }
 
-#fullscreenButton::after {
-    content: url("icones/fullScreen.svg");
-}
-
 #fullscreenButton {
     cursor: url("icones/cursorPointer.png"), auto;
 }
