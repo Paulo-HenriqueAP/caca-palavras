@@ -5,7 +5,7 @@ function summaryWord(summaryIt) {
     const word = summaryIt;
     const url = `https://${languageSRC.id}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(word)}`;
 
-    p.textContent = "Carregando.."
+    p.textContent = UI_loading[languageSRC.index];
 
     fetch(url, {
         headers: {
@@ -42,7 +42,7 @@ function summaryWord(summaryIt) {
             a.target = "_blank";
             a.classList = "aLink";
             a.href = `https://duckduckgo.com/?q=${encodeURIComponent(summaryIt)}`;
-            a.textContent = "🔎 duckduckgo  " + summaryIt;
+            a.textContent = summaryIt + " 🔎";
             p.appendChild(a);
         });
 }

@@ -34,7 +34,7 @@ em {
     font-size: large;
     padding: 6px;
     cursor: url("icones/cursorPointer.png"), auto;
-    opacity: 50%;
+    opacity: 80%;
     border: none;
     border-radius: 3px;
     margin: 6px;
@@ -46,7 +46,7 @@ em {
 
 .options button:hover {
     box-shadow: 2px 2px #006700;
-    opacity: 90%;
+    opacity: 100%;
 }
 
 #languageDiv {
@@ -58,29 +58,42 @@ em {
 
 #languageDiv button {
     display: flex;
+    opacity: 80%;
 }
 
 #fontList {
     color: white;
-    position: absolute;
     color: #000000;
     z-index: 1;
     padding: 6px;
     border-radius: 3px;
-    border-bottom-left-radius: 0;
     border-top-left-radius: 0;
+    border-top-right-radius: 0;
     user-select: none;
     list-style: none;
     text-transform: none;
     opacity: 50%;
     transition: opacity 0.4s ease;
     font-size: large;
+    position: absolute;
+    left: 0%;
+}
+
+#fontOptions {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 230px;
 }
 
 #fontList li {
     margin: 3px;
     padding: 3px;
     text-align: left;
+    width: 100px;
+    border-radius: 3px;
+    text-align: center;
+    box-shadow: 0 1px 4px rgba(5, 12, 30, 0.5);
 }
 
 #fontList li:hover {
@@ -94,6 +107,7 @@ em {
 #fontList[open] {
     opacity: 100%;
     background-color: white;
+    box-shadow: 0 20px 40px rgba(5, 12, 30, 0.5);
 }
 
 summary::-webkit-details-marker {
@@ -107,17 +121,13 @@ summary {
 
 #fontSize {
     cursor: grab;
-}
-
-#resetFontSize {
-    cursor: url("icones/cursorPointer.png"), auto;
-    font-size: xx-large;
+    width: 99px;
 }
 
 .sel {
-    background-color: #2e2e2e;
+    background-color: #2e2e2e !important;
     color: white;
-    box-shadow: 1px 1px #006700;
+    box-shadow: 1px 1px #006700 !important;
     border-radius: 3px;
 }
 
@@ -133,31 +143,42 @@ summary {
     font-weight: bold;
 }
 
-#boldOn {
-    font-weight: bold;
-    width: max-content;
-    cursor: url("icones/cursorPointer.png"), auto;
-    border-radius: 3px;
-    margin-left: 6px;
-    border-radius: 3px;
-    border: 1px solid black;
-    border: none;
-    border-bottom: 1px solid black;
-}
 
-#boldOn img {
-    width: 20px;
+#fh3 {
+    text-align: left;
+    font-weight: bold;
+    font-size: x-large;
+    left: 0;
+    display: block;
 }
 
 #fsett {
     display: flex;
-    margin: 6px;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
 }
 
-#fsett span {
-    margin-right: 6px;
+#resetFontSize {
+    cursor: url("icones/cursorPointer.png"), auto;
+    border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid black;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-left: 12px;
 }
+
+#boldOn {
+    cursor: url("icones/cursorPointer.png"), auto;
+    border-radius: 3px;
+    border-radius: 3px;
+    border: 1px solid black;
+    border: none;
+    border-bottom: 1px solid black;
+    margin-left: 12px;
+}
+
 
 #main {
     position: absolute;
@@ -169,7 +190,6 @@ summary {
 
 #bodyTable {
     border-collapse: collapse;
-    border: 2px solid green;
     width: 90vw;
     max-width: 600px;
     height: 60vh;
@@ -177,6 +197,8 @@ summary {
     background-color: #F2F3F4;
     cursor: url("icones/cursorTable.png") 8 8, crosshair;
     z-index: 1;
+
+    box-shadow: 3px 3px #F2F3F4;
 }
 
 #wordsLi {
@@ -186,13 +208,13 @@ summary {
     justify-content: center;
     padding: 12px;
     gap: 12px;
-     font-family: 'ComicNeue';
+    font-family: 'ComicNeue';
 }
 
 #bodyTable td {
     user-select: none;
     color: #000000;
-     font-family: 'ComicNeue';
+    font-family: 'ComicNeue';
     font-size: inherit;
     text-align: center;
     line-height: 1.2em;
@@ -233,6 +255,8 @@ summary {
     border-radius: 3px;
     display: flex;
     flex-direction: column;
+
+    height: min-content;
 }
 
 #wordsLi details[open] summary {
@@ -262,7 +286,7 @@ summary {
 }
 
 .aLink {
-    color: white;
+    color: gray;
 }
 
 input[type="checkbox"] {
@@ -303,8 +327,7 @@ input[type="checkbox"] {
     font-family: "BebasNeue";
 }
 
-#muteButton,
-#rate {
+#muteButton {
     display: flex;
     align-items: center;
     cursor: url("icones/cursorPointer.png"), auto;
@@ -334,14 +357,31 @@ input[type="checkbox"] {
 
 }
 
+.ValidAni {
+    animation: valid 3s;
+    animation-timing-function: ease-in-out;
+
+}
+
 @keyframes error {
     from {
-        border: 2px solid red;
+        box-shadow: 3px 3px red;
 
     }
 
     to {
-        border: 2px solid green;
+        box-shadow: 3px 3px #F2F3F4;
+    }
+}
+
+@keyframes valid {
+    from {
+        box-shadow: 3px 3px green;
+
+    }
+
+    to {
+        box-shadow: 3px 3px #F2F3F4;
     }
 }
 
@@ -352,12 +392,14 @@ input[type=number]::-webkit-outer-spin-button {
 
 #gridSize {
     text-align: center;
-    border-radius: 3px;
     font-weight: bold;
     margin-top: 12px;
-    border: 1px solid black;
     text-align: center;
     padding: 6px;
+    width: max-content;
+    transform: translateX(-50%);
+    left: 50%;
+    position: relative;
 }
 
 #gridSize span {
@@ -486,35 +528,4 @@ input[type=number]::-webkit-outer-spin-button {
 
 .valido {
     opacity: 70%;
-}
-
-#rate {
-    text-decoration: none;
-    border: 1px solid black;
-    border-radius: 3px;
-    background-color: #FFC107;
-    color: black;
-}
-
-iframe {
-    width: 95vw;
-    max-width: 600px;
-    height: 90vh;
-    background-color: #1e1e1e;
-    position: absolute;
-    transform: translateX(-50%);
-    left: 50%;
-    top: 5%;
-    z-index: 1;
-    border-radius: 3px;
-}
-
-#closeRate {
-    padding: 6px;
-    cursor: url("icones/cursorPointer.png"), auto;
-    height: 5vh;
-    position: fixed;
-    width: 100%;
-    background-color: #1e1e1e;
-    z-index: 2;
 }

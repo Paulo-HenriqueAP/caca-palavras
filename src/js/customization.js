@@ -61,6 +61,7 @@ function toggleFullscreen() {
     } else {
         document.exitFullscreen?.();
     }
+    document.getElementById("fullscreenButton").classList.toggle("sel")
 }
 
 const UI_loading = [
@@ -69,13 +70,14 @@ const UI_loading = [
     "Chargement...",
     "Caricamento...",
     "Carregando...",
+    "Laddar..."
 ]
 
 function uiLanguage(idioma) {
     const titulo = document.getElementById("title");
-    const minuscula = document.getElementById("lowerCase");
-    const bordas = document.getElementById("borderOn");
-    const imprimir = document.getElementById("printButton");
+    //const minuscula = document.getElementById("lowerCase");
+    //const bordas = document.getElementById("borderOn");
+    //const imprimir = document.getElementById("printButton");
     const fonte = document.getElementById("fh3");
     const geracaoPalavras = document.getElementById("gridSizeSpan");
     const poucas = document.getElementById("c0");
@@ -84,7 +86,6 @@ function uiLanguage(idioma) {
     const largura = document.getElementById("ww");
     const altura = document.getElementById("hh");
     const validaProx = document.getElementById("info_wh");
-    const avaliacao = document.getElementById("rate");
 
     const UI_translations = {
         "en": {
@@ -101,7 +102,6 @@ function uiLanguage(idioma) {
             UI_wid: "width",
             UI_hei: "height",
             UI_info1: "* valid on next",
-            UI_rate: "rate"
         },
         "es": {
             UI_titleName: `busca ${validWords} palabras español`,
@@ -117,7 +117,6 @@ function uiLanguage(idioma) {
             UI_wid: "anchura",
             UI_hei: "altura",
             UI_info1: "* válido en la próx",
-            UI_rate: "calificar"
         },
 
         "fr": {
@@ -134,7 +133,6 @@ function uiLanguage(idioma) {
             UI_wid: "largeur",
             UI_hei: "hauteur",
             UI_info1: "* valable à la prochaine",
-            UI_rate: "Noter"
         },
         "it": {
             UI_titleName: `ricerca ${validWords} parole in italiano`,
@@ -150,7 +148,6 @@ function uiLanguage(idioma) {
             UI_wid: "larghezza",
             UI_hei: "altezza",
             UI_info1: "* valido sul prossimo",
-            UI_rate: "Valuta"
         },
 
         "pt": {
@@ -167,17 +164,31 @@ function uiLanguage(idioma) {
             UI_wid: "largura",
             UI_hei: "altura",
             UI_info1: "* válido no próx",
-            UI_rate: "avaliar"
         },
-
+        
+        "sv": {
+            UI_titleName: `hitta ${validWords} ord på svenska`,
+            UI_lowerCase: "gemener",
+            UI_borders: "ramar",
+            UI_print: "skriv ut",
+            UI_font: "typsnitt",
+            UI_bold: "fetstil",
+            UI_wordSettings: "ordinställningar",
+            UI_wordS1: "få",
+            UI_wordS2: "normal",
+            UI_wordS3: "många",
+            UI_wid: "bredd",
+            UI_hei: "höjd",
+            UI_info1: "* gäller nästa gång"
+        }
 
     };
 
 
     titulo.textContent = UI_translations[idioma].UI_titleName;
-    minuscula.textContent = UI_translations[idioma].UI_lowerCase;
-    bordas.textContent = UI_translations[idioma].UI_borders;
-    imprimir.textContent = UI_translations[idioma].UI_print;
+    //minuscula.textContent = UI_translations[idioma].UI_lowerCase;
+    //bordas.textContent = UI_translations[idioma].UI_borders;
+    //imprimir.textContent = UI_translations[idioma].UI_print;
     fonte.textContent = UI_translations[idioma].UI_font;
     geracaoPalavras.textContent = UI_translations[idioma].UI_wordSettings;
     poucas.textContent = UI_translations[idioma].UI_wordS1
@@ -186,5 +197,4 @@ function uiLanguage(idioma) {
     largura.textContent = UI_translations[idioma].UI_wid;
     altura.textContent = UI_translations[idioma].UI_hei;
     validaProx.textContent = UI_translations[idioma].UI_info1
-    avaliacao.textContent = UI_translations[idioma].UI_rate
 }

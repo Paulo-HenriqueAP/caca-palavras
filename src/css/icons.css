@@ -1,52 +1,39 @@
-#en::before {
-    content: url("icones/us.svg");
+#en::before, #es::before, #fr::before, #it::before, #pt::before, #sv::before {
+    content: "";
+    display: block; 
     width: 30px;
+    height: 20px;
+    background-size: contain; 
+    background-repeat: no-repeat;
+}
+
+#en::after, #es::after, #fr::after, #it::after, #pt::after, #sv::after {
+    content: url("icones/refr.svg");
+    margin-left: 3px;
+}
+
+#en::before {
+    background-image: url("icones/flags/us.svg");
 }
 
 #es::before {
-    content: url("icones/es.svg");
-    width: 30px;
+    background-image: url("icones/flags/es.svg");
 }
 
 #fr::before {
-    content: url("icones/fr.svg");
-    width: 30px;
+    background-image: url("icones/flags/fr.svg");
 }
 
 #it::before {
-    content: url("icones/it.svg");
-    width: 30px;
+    background-image: url("icones/flags/it.svg");
 }
 
 #pt::before {
-    content: url("icones/br.svg");
-    width: 30px;
+    background-image: url("icones/flags/br.svg");
 }
 
-
-#en::after {
-    content: url("icones/refr.svg");
-    margin-left: 3px;
-}
-
-#es::after {
-    content: url("icones/refr.svg");
-    margin-left: 3px;
-}
-
-#fr::after {
-    content: url("icones/refr.svg");
-    margin-left: 3px;
-}
-
-#it::after {
-    content: url("icones/refr.svg");
-    margin-left: 3px;
-}
-
-#pt::after {
-    content: url("icones/refr.svg");
-    margin-left: 3px;
+#sv::before {
+    background-image: url("icones/flags/se.svg");
 }
 
 #muteButton::after {
@@ -60,22 +47,18 @@
 
 #borderOn::after {
     content: url("icones/border.svg");
-    margin-left: 3px;
 }
 
 #printButton::after {
     content: url("icones/print.svg");
-    margin-left: 3px;
 }
 
 #lowerCase::after {
     content: url("icones/lowerCase.svg");
-    margin-left: 3px;
 }
 
 #savePNG::after {
     content: url("icones/share.svg");
-    margin-left: 3px;
 }
 
 #fontList summary::before {
@@ -84,8 +67,13 @@
 
 #fontList[open] summary::before {
     content: url("icones/close.svg");
-    right: 5%;
     position: absolute;
+    right: 1%;
+    top: 0;
+}
+
+#resetFontSize::after {
+    content: url("icones/refresh.svg");
 }
 
 #wordsLi summary::after {

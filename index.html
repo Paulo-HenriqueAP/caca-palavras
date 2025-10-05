@@ -14,30 +14,34 @@
 </head>
 
 <body>
-    <h1 id="closeRate" class="hidden"></h1>
     <details id="fontList">
-        <summary>
-        </summary>
-        <br>
-        <h3>
-            <div id="fsett">
-                <span id="fh3">fonte</span>
-                <span style="text-align: center;font-weight: bold;font-size: x-small;"><em id="fontPX"
-                        style="font-size: small;">24</em>px</span>
-                <button id="boldOn" onclick="turnBold(); this,classList.toggle('sel')"><img
-                        src="src/css/icones/boldON.svg"></button>
-            </div>
-            <input type="range" id="fontSize" min="5" max="100" oninput="fontSize(this.value)" value="24">
-            <span id="resetFontSize" onclick="fontSize('default')">⟲</span>
-        </h3>
-        <li onclick="changeFont(this)" id="ft0">Arial</li>
-        <li onclick="changeFont(this)" id="ft1" data-font="'BebasNeue', Arial">Bebas Neue</li>
-        <li onclick="changeFont(this)" id="ft2" data-font="'ComicNeue', Arial" class="sel">Comic Neue</li>
-        <li onclick="changeFont(this)" id="ft3" data-font="'Dancing Script', Arial">Dancing Script</li>
-        <li onclick="changeFont(this)" id="ft4">Monospace</li>
-        <li onclick="changeFont(this)" id="ft5" data-font="'Orbitron', Arial">Orbitron</li>
-        <li onclick="changeFont(this)" id="ft6" data-font="'Playfair', Arial">Playfair</li>
-        <li onclick="changeFont(this)" id="ft7" data-font="'Poppins', Arial">Poppins</li>
+        <summary></summary>
+        <span id="fh3">fonte</span>
+
+        <div id="fsett">
+
+            <input type="range" id="fontSize" min="5" max="99" oninput="fontSize(this.value)" value="24">
+
+            <span style="text-align: center;font-weight: bold;font-size: x-small;">
+                <em id="fontPX" style="font-size: small;">24</em>px
+            </span>
+            <button id="resetFontSize" onclick="fontSize('default')"></button>
+
+            <button id="boldOn" onclick="turnBold(); this,classList.toggle('sel')">
+                <img src="src/css/icones/boldON.svg">
+            </button>
+        </div>
+
+        <div id="fontOptions">
+            <li onclick="changeFont(this)" id="ft0">Arial</li>
+            <li onclick="changeFont(this)" id="ft1" data-font="'BebasNeue', Arial">Bebas Neue</li>
+            <li onclick="changeFont(this)" id="ft2" data-font="'ComicNeue', Arial" class="sel">Comic Neue</li>
+            <li onclick="changeFont(this)" id="ft3" data-font="'Dancing Script', Arial">Dancing Script</li>
+            <li onclick="changeFont(this)" id="ft4">Monospace</li>
+            <li onclick="changeFont(this)" id="ft5" data-font="'Orbitron', Arial">Orbitron</li>
+            <li onclick="changeFont(this)" id="ft6" data-font="'Playfair', Arial">Playfair</li>
+            <li onclick="changeFont(this)" id="ft7" data-font="'Poppins', Arial">Poppins</li>
+        </div>
 
         <div id="gridSize">
             <span id="gridSizeSpan">geração de palavras</span>
@@ -58,14 +62,17 @@
                 </span>
 
             </div>
+
         </div>
+
         <div style="display: flex; justify-content: space-between; margin-top: 6px;">
             <button onclick="soundOn = !soundOn; this.classList.toggle('sel')" id="muteButton"></button>
-            <button id="rate" onclick="rate()">⭐</button>
-            <button onclick="toggleFullscreen();" id="fullscreenButton"><img src="src/css/icones/fullscreen.svg" alt="[]"></button>
+            <button onclick="toggleFullscreen();" id="fullscreenButton"><img src="src/css/icones/fullscreen.svg"
+                    alt="[]"></button>
         </div>
 
     </details>
+
     <div class="options hidden" id="opt">
         <div id="languageDiv">
             <button id="en" onclick="txtToArray(0)"></button>
@@ -73,18 +80,16 @@
             <button id="fr" onclick="txtToArray(2)"></button>
             <button id="it" onclick="txtToArray(3)"></button>
             <button id="pt" onclick="txtToArray(4)"></button>
+            <button id="sv" onclick="txtToArray(5)"></button>
         </div>
-        <button onclick=" document.body.classList.toggle('borders'); this.classList.toggle('sel')" id="borderOn">
-            Bordas
-        </button>
+        <button onclick=" document.body.classList.toggle('borders'); this.classList.toggle('sel')"
+            id="borderOn"></button>
 
-        <button onclick="document.body.classList.toggle('low'); this.classList.toggle('sel')" id="lowerCase">
-            minusculas
-        </button>
+        <button onclick="document.body.classList.toggle('low'); this.classList.toggle('sel')" id="lowerCase"></button>
 
-        <button onclick=" window.print()" id="printButton">imprimir</button>
+        <button onclick=" window.print()" id="printButton"></button>
 
-        <button onclick="tempShare()" id="savePNG">PNG</button>
+        <button onclick="tempShare()" id="savePNG"></button>
     </div>
     <span id="title"></span>
 

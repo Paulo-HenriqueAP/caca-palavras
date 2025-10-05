@@ -5,12 +5,13 @@
 Un gioco interattivo di ricerca di parole con migliaia di parole e personalizzazione per giocare o stampare!
 
 <p>
-<b>README:</b>
-<a href="README.md">Português</a> |
-<a href="README.en.md">English</a> |
-<a href="README.es.md">Español</a> |
-<a href="README.fr.md">Français</a> |
-<b>Italiano</b>
+  <b>README:</b>
+  <a href="README.md">Português</a> |
+  <a href="README.en.md">English</a> |
+  <a href="README.es.md">Español</a> |
+  <a href="README.fr.md">Français</a> |
+  <b>Italiano</b> |
+  <a href="README.sv.md">Svedese</a>
 </p>
 
 </div>
@@ -19,14 +20,14 @@ Un gioco interattivo di ricerca di parole con migliaia di parole e personalizzaz
 
 ## Funzionalità
 
-  - **5 Dizionari Estesi**:
-    `2.098.638` (due milioni, novantottomila, seicentotrentotto) parole in totale:
-
-      - `261.798` in **Portoghese**
-      - `466.550` in **Inglese**
-      - `646.615` in **Spagnolo**
-      - `62.112` in **Francese**
-      - `661.563` in **Italiano**
+  - **6 Dizionari Estesi**:
+  `2.171.008` (due milioni, centosettantunomilaotto) parole in totale:
+  - `261.798` in **Portoghese**
+  - `466.550` in **Inglese**
+  - `646.615` in **Spagnolo**
+  - `62.112` in **Francese**
+  - `661.563` in **Italiano**
+  - `72.370` in **Svedese**
 
   - **Direzioni Varie**:
     Parole posizionate in orizzontale, verticale, diagonale o diagonale inversa,
@@ -85,13 +86,12 @@ Regola la dimensione della griglia e il carattere per personalizzare l'esperienz
   - [Paulo Henrique AP](https://github.com/Paulo-HenriqueAP)
 
 ### Dizionari
-
-  - **Portoghese (br.txt)**: [USP](https://www.ime.usp.br/~pf/dicios/)
-  - **Inglese (en.txt)**: [dwyl](https://github.com/dwyl/english-words)
-  - **Spagnolo (es.txt)**: [JorgeDuenasLerin](https://github.com/JorgeDuenasLerin/diccionario-espanol-txt/tree/master)
-  - **Francese (fr.txt)**: [nderousseaux](https://gist.github.com/nderousseaux/382c085f393ef88466e1cbcc98589687)
-  - **Italiano (it.txt)** [napolux](https://github.com/napolux)
-
+- **Portoghese (br.txt)**: [USP](https://www.ime.usp.br/~pf/dicios/)
+- **Inglese (en.txt)**: [dwyl](https://github.com/dwyl/english-words)
+- **Spagnolo (es.txt)**: [JorgeDuenasLerin](https://github.com/JorgeDuenasLerin/diccionario-espanol-txt/tree/master)
+- **Francese (fr.txt)**: [nderousseaux](https://gist.github.com/nderousseaux/382c085f393ef88466e1cbcc98589687)
+- **Italiano (it.txt)** [napolux](https://github.com/napolux)
+- **Svedese (sv.txt)**: [kkrypt0nn](https://github.com/kkrypt0nn/wordlists/blob/main/wordlists/languages/swedish.txt)
 ### Risorse visive
 
   - **Bandiere**:

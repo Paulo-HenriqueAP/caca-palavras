@@ -66,6 +66,12 @@ function startLoadBar() {
 
                     tempArr = [];
 
+
+                    document.getElementById("bodyTable").classList.add("ValidAni")
+                    setTimeout(function () {
+                        document.getElementById("bodyTable").classList.remove("ValidAni")
+                    }, 4000)
+
                     if (soundOn) tSoundPlay();
 
                     match.found = true;

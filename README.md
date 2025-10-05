@@ -10,7 +10,8 @@ Um jogo de caça-palavras interativo com milhares de palavras e personalização
 <a href="README.en.md">English</a> |
 <a href="README.es.md">Español</a> |
 <a href="README.fr.md">Français</a> |
-<a href="README.it.md">Italiano</a>
+<a href="README.it.md">Italiano</a> |
+<a href="README.sv.md">Sueco</a> |
 </p>
 
 </div>
@@ -19,13 +20,14 @@ Um jogo de caça-palavras interativo com milhares de palavras e personalização
 
 ## Funcionalidades
 
-- **5 Dicionários Extensos**: 
-  `2.098.638` (dois milhões, noventa e oito mil, seiscentas e trinta e oito) palavras no total:
+- **6 Dicionários Extensos**: 
+  `2.171.008` (dois milhões, cento e setenta e um mil e oito) palavras no total:
   - `261.798` em **Português**
   - `466.550` em **Inglês**
   - `646.615` em **Espanhol**
   - `62.112` em **Francês**
   - `661.563` em **Italiano**
+  - `72.370` em **Sueco**
 
 - **Direções Variadas**:  
   Palavras posicionadas em horizontal, vertical, diagonal ou diagonal inversa,  
@@ -87,6 +89,7 @@ Ajuste o tamanho do grid e a fonte para personalizar a experiência.
 - **Espanhol (es.txt)**: [JorgeDuenasLerin](https://github.com/JorgeDuenasLerin/diccionario-espanol-txt/tree/master)  
 - **Francês (fr.txt)**: [nderousseaux](https://gist.github.com/nderousseaux/382c085f393ef88466e1cbcc98589687)  
 - **Italiano (it.txt)** [napolux](https://github.com/napolux)
+- **Sueco (sv.txt)**: [kkrypt0nn](https://github.com/kkrypt0nn/wordlists/blob/main/wordlists/languages/swedish.txt)
 
 ### Recursos visuais
 - **Bandeiras**:  

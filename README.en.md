@@ -5,12 +5,13 @@
 An interactive word search game with thousands of words and customization options to play or print!
 
 <p>
-<b>README:</b>
-<a href="README.md">Português</a> |
-<b>English</b> |
-<a href="README.es.md">Español</a> |
-<a href="README.fr.md">Français</a> |
-<a href="README.it.md">Italiano</a>
+  <b>README:</b>
+  <a href="README.md">Português</a> |
+  <b>English</b> |
+  <a href="README.es.md">Español</a> |
+  <a href="README.fr.md">Français</a> |
+  <a href="README.it.md">Italiano</a> |
+  <a href="README.sv.md">Swedish</a>
 </p>
 
 </div>
@@ -19,14 +20,14 @@ An interactive word search game with thousands of words and customization option
 
 ## Features
 
-  - **5 Extensive Dictionaries**:
-    `2,098,638` (two million, ninety-eight thousand, six hundred thirty-eight) words in total:
-
-      - `261,798` in **Portuguese**
-      - `466,550` in **English**
-      - `646,615` in **Spanish**
-      - `62,112` in **French**
-      - `661,563` in **Italian**
+ - **6 Extensive Dictionaries**:
+  `2,171,008` (two million, one hundred seventy-one thousand, and eight) words in total:
+  - `261,798` in **Portuguese**
+  - `466,550` in **English**
+  - `646,615` in **Spanish**
+  - `62,112` in **French**
+  - `661,563` in **Italian**
+  - `72,370` in **Swedish**
 
   - **Varied Directions**:
     Words are positioned horizontally, vertically, diagonally, or in reverse diagonal,
@@ -85,12 +86,12 @@ Adjust the grid size and font to personalize the experience.
   - [Paulo Henrique AP](https://github.com/Paulo-HenriqueAP)
 
 ### Dictionaries
-
-  - **Portuguese (br.txt)**: [USP](https://www.ime.usp.br/~pf/dicios/)
-  - **English (en.txt)**: [dwyl](https://github.com/dwyl/english-words)
-  - **Spanish (es.txt)**: [JorgeDuenasLerin](https://github.com/JorgeDuenasLerin/diccionario-espanol-txt/tree/master)
-  - **French (fr.txt)**: [nderousseaux](https://gist.github.com/nderousseaux/382c085f393ef88466e1cbcc98589687)
-  - **Italian (it.txt)** [napolux](https://github.com/napolux)
+- **Portuguese (br.txt)**: [USP](https://www.ime.usp.br/~pf/dicios/)
+- **English (en.txt)**: [dwyl](https://github.com/dwyl/english-words)
+- **Spanish (es.txt)**: [JorgeDuenasLerin](https://github.com/JorgeDuenasLerin/diccionario-espanol-txt/tree/master)
+- **French (fr.txt)**: [nderousseaux](https://gist.github.com/nderousseaux/382c085f393ef88466e1cbcc98589687)
+- **Italian (it.txt)** [napolux](https://github.com/napolux)
+- **Swedish (sv.txt)**: [kkrypt0nn](https://github.com/kkrypt0nn/wordlists/blob/main/wordlists/languages/swedish.txt)
 
 ### Visual Resources
 

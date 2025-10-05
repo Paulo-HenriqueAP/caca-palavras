@@ -3,7 +3,7 @@ const wordsPack = [
 
     { path: "src/words/fr.txt", id: "fr", index: 2 }, { path: "src/words/it.txt", id: "it", index: 3 },
 
-    { path: "src/words/br.txt", id: "pt", index: 4 },
+    { path: "src/words/br.txt", id: "pt", index: 4 },  { path: "src/words/sv.txt", id: "sv", index: 5 },
 
 ];
 
@@ -322,24 +322,4 @@ function validTD(tipo) {
 }
 window.onbeforeprint = function () {
     document.title = `${document.getElementById("title").textContent} - ${new Date().toLocaleString()}`
-}
-
-function rate() {
-    const closeRate = document.getElementById("closeRate");
-
-    closeRate.addEventListener("click", () => {
-        iframe.remove();
-        closeRate.classList.add("hidden");
-        document.getElementById("fontList").classList.remove("hidden");
-        document.getElementById("main").classList.remove("hidden")
-    })
-
-    const iframe = document.createElement("iframe");
-    iframe.src = "https://docs.google.com/forms/d/e/1FAIpQLSenlkFkxKr985QhJQJaoPRrnOSFCV4iMFvXuf6GxXeWDy00gw/viewform?embedded=true";
-    iframe.frameBorder = "0";
-    iframe.marginwidth = "0";
-    document.body.appendChild(iframe)
-    closeRate.classList.remove("hidden");
-    document.getElementById("fontList").classList.add("hidden");
-    document.getElementById("main").classList.add("hidden");
 }
